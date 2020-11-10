@@ -1,0 +1,19 @@
+.header {
+    margin-left: auto; 
+    margin-right: auto;
+    border-bottom: solid;
+    
+}
+.navigation{
+    list-style: none ; 
+    display: inline-flex; 
+    margin-left: 150px;
+}
+li {
+    margin: 10px;
+}
+.content{
+    margin-left: auto;
+    margin-right: auto;
+    width: 28%;
+}

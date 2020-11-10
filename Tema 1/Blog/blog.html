@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dorel's Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <table class="header"> 
+		
+			<td>
+				<p>
+					Dorel's Blog
+				</p>	
+			</td>
+			<td>
+				
+				<table>
+					<tr>
+						<td>
+                            <ul class="navigation">
+                                <li>Home</li>
+                                <li>About</li>
+                                <li>Archieve</li>
+                            </ul>
+						</td>
+                    </tr>
+                    
+                </table>  
+                
+    </table>
+    <table class="content">
+        <tr>
+            <td>
+                
+                <h1>Rules for Autocomplete</h1>
+                <em>Posted on November 09, 2020</em>
+                <p>
+                    Autocompleting text with known values seems like an easy problem to solve, 
+                    but so so so many UIs get it wrong. I see this frequently enough that, 
+                    rather than complain about them individually, 
+                    I though I’d just write down the set of rules they often break.
+                </p>
+                <p>
+                    There may be cases where some of these rules aren’t the best thing to do, 
+                    but there should be a good reason for breaking one of these rules 
+                    (for example, some of these rules don’t apply if a field must be filled with a value from a fixed set, like the list of US states). 
+                    Following these rules should always result in at very least a sane experience:
+                </p>
+                    <ul>
+                        <li>Exact matches always come first. 
+                            If the user types in an option exactly, 
+                            other options must always go below the one matching what they typed.</li>
+                        <li>Besides exact matches, prefix matches come first. 
+                            If I type “Fr” I want “Fresno” not “San Francisco.”</li>
+                        <li>After prefix matches, it can fall back to substring matches. 
+                            Starting with substring matches would almost always be the wrong thing to do since
+                            users start typing words at the beginning not somewhere in the middle.</li>
+                        <li>If there are no substring matches, it can optionally fall back to subsequence matching.
+                            This is only useful in some cases.</li>
+                        <li>If there are no subsequence/substring matches, 
+                            it can optionally fall back to approximate matches. 
+                            This is rarely necessary to provide.</li>
+                        <li>Matches should be sorted alphabetically.</li>
+                        <li>When one option is the prefix of another, put the 
+                            <em> one first.</em></li>
+                        <li>The matching should probably be case insensitive unless there are two options that differ only by case. 
+                            In that case (pun intended), 
+                            prefer the one that more closely matches the user’s input.</li>
+                        <li>The action to make use of the selection (e.g. to search the term) 
+                            must be a different key than the action to accept the first suggestion 
+                            unless you have to do something first to start using autocomplete suggestions (e.g. hit the down arrow). 
+                            The user should never have to take extra steps to not use autocomplete.</li>
+                        <li>The tab key should always accept the current autocomplete option, 
+                            if there is one (whether it is highlighted in a dropdown or suggested inline).</li>
+                        <li>If an autocomplete selection is highlighted, 
+                            pressing enter should always make use of that selection. 
+                            It should never revert to a default selection, even if part of the page is loading. 
+                            If something is still loading, 
+                            it is better to ignore the enter press than to navigate to the wrong destination.</li>
+                        <li>Autocomplete should almost never activate on keypresses
+                            when the field using autocomplete is not focused.</li>
+                        <li>The results should come in &lt100ms in the common case.</li>
+                        <li>It’s OK to pause autocompleting when the user is rapidly typing additional letters, 
+                            but don’t show results from the middle of that burst of letters after the user has finished typing. 
+                            It’s better to wait longer and change the results once than to show results that appear finished but aren’t. 
+                            (I admit that this rule is quite subjective.)</li>
+                        <li>If an option is highlighted, never change it, 
+                            even if new data is loaded.</li>
+                    </ul>
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>

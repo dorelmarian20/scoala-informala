@@ -1,0 +1,24 @@
+img{
+    border-radius: 50%;
+    width: 150%;
+}
+.species {
+    margin-left: 30%;
+    margin-right: auto;
+    
+}
+.detail {
+    margin-left: 20%;
+    margin-right: auto;
+    width: 28%;
+    border-left: solid
+                lightgrey;
+                padding-left: 80px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    background-color: yellow;
+}
