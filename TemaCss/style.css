@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+.image {
+    width: 400px;
+    margin: 10px;
+}
+.xbox-image {
+    min-height: 100px;
+}
+.playstation-image {
+    min-height: 200px;
+}
+.nintendo-image {
+    min-height: 300px;
+}
+.container-names {
+    display: flex;
+    justify-content: space-around;
+}
+.buttons-container {
+    display: flex;
+    justify-content: space-around; 
+}
+.button {
+    width: 40px;
+    margin: 5px;
+}
+.description {
+    display: flex;
+    justify-content: space-around;
+}
+.text {
+    margin: 10px;
+}

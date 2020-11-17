@@ -1,0 +1,41 @@
+ /* selector{
+            prop1:val;
+            prop2:val2;
+        }*/
+h1{
+    background-color: aquamarine;
+    color: darkblue;
+}
+.highlight{
+   font-size: 1em;
+   line-height: 40px;
+   font-weight: bold;
+}
+body {
+   padding: 0;
+   margin: 0;
+}
+.highlight.button {
+    /*ambele clase in acelasi timp; nu conteaza ordinea*/
+}
+.parinte .copil{
+    /*ce este pana la spatiu e un selector pentru parinte
+    ce este dupa spatiu este un selector poentru copil/copii*/
+}
+.parinte div{
+    /*se va uita doar la tagurrile div care sunt in clasa parinte*/
+}
+#nav-menu .nav-menu-item .icon{
+    /*parinte-parinte-copil*/
+}
+
+#nav-menu>.nav-menu-item>.icon{
+/*parinte-primul parinte-copil*/
+}
+.highlight, .button{
+    /*elementele care au ori clasa highlight ori clasa button CU SAU*/
+}
+#nav-menu .nav-menu-item:hover{
+    background-color: blue;
+    color: white;
+}
