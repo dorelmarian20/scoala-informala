@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+#topBar {
+    box-sizing: border-box;
+    background-color: #dbe6cb6e;
+	height:110px;
+}
+.pageTitel{
+    padding-left: 10%;
+    padding-top: 2.5%;
+    display: flex;
+}
+.contactUsText {
+    font-size: 40px;
+    padding-right: 15px;
+}
+.textAfterContact {
+    padding-top: 15px;
+    font-size: 20px;
+    color: grey;
+}
+.formular {
+    display: flex;
+    box-sizing: border-box;
+    margin: 20% 25%;
+    background-color: red;
+    min-width: 550px;
+}
+.loginForm {
+    padding-left: 4%;
+}
+
+.loginBtn {
+   padding-left: 0%;
+}
+.socialMediaLinks {
+   text-align: center;
+}

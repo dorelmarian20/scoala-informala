@@ -1,0 +1,21 @@
+body{
+    font-size: 2rem;
+    display: flex;
+    width: 70%;
+    background-color: palegreen;
+    padding: 40px 20px 200px;
+    z-index: 1;
+}
+div {
+    padding: 20px 20px 60px;
+}
+.window {
+    width: 30%;
+    background-color: #cfc;
+    border: 3px dashed darkgreen;  
+    position: relative;
+}
+button{
+    float: right;
+    margin: 5px;
+}
