@@ -1,0 +1,39 @@
+body{
+    background-color: darkslategray;
+}
+.main {
+    margin-left: 25%;
+    margin-right: 25%;
+
+}
+.title {
+    color: white;
+    padding-bottom: 20px;
+    border-bottom: solid grey;
+}
+.content1 h3{
+    color: rgb(22, 241, 22);
+}
+.content1 p {
+    color: white;
+}
+.content1 {
+    padding-bottom: 20px;
+    border-bottom: solid grey;
+}
+.enumeration {
+   display: flex;
+   justify-content: space-around;
+   border: none 5px;
+   padding: 4px;
+   color: rgb(22, 241, 22);
+}
+.textUnderList {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    border: none 5px;
+    padding: 4px;
+    border-bottom: solid grey;
+    color: white;
+}
