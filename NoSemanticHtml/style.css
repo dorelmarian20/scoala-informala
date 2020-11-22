@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.title {
+    background-color: orange;
+    color: rgba(167, 108, 15, 0.52);
+    font-size: 90px;
+}
+.wrapper {
+    display: flex;
+  
+}
+.sectionTitle{
+    background-color: rgba(240, 207, 101, 0.842);
+    padding-right: 5%;
+    min-height: 653px;
+    
+}
+.sectionTitle>h4{
+    padding-left: 20%;
+    color: rgb(158, 112, 27);
+}
+ul {
+    width: 100px;
+    list-style: none;
+    padding-left: 20%;
+}
+
+.content {
+    padding-left: 2%;
+    background-color: rgb(202, 157, 72);
+}
