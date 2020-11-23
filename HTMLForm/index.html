@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="title">
+        <h2>HTML Form</h2>
+        <span>Sign up to the newsletter</span>
+    </div>
+    <div class="content">
+       
+            <form class="emailForm">
+                <label for="email">Email</label><br><br>
+                <input type="text" id="email" placeholder="Enter your email..."><br><br>
+                <span>We will send you an email describing how to activate your newsletter subscription.</span>
+            </form>
+            <form class="name">
+                <label for="name">Name</label><br>
+                <input type="text" id="name" placeholder="First">
+                <input type="text" id="name" placeholder="Last">
+            </form>
+            <form class="preferredNews">
+                <p>Preferred newsletter format:</p>
+                <input type="radio" id="text" name="text" value="text">
+                <label for="text">Text</label><br>
+                <input type="radio" id="html" name="html" value="html">
+                <label for="html">HTML</label><br>
+                <button type="submit" value="Submit">Submit</button><br><br>
+            </form>
+            
+    </div>
+</body>
+</html>
