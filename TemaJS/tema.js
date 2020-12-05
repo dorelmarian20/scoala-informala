@@ -15,7 +15,7 @@ function compare(a, b) {
         return -1;
     } else if (a === b) {
         return 0;
-    } else if (a > b) {
+    } else {
         return 1;
     }
 }
@@ -71,13 +71,20 @@ function prim(n) {
 
 //TODO: exercitiu 7
 
-function sumaPrime (num) {
-    let sum = 0;
-    for(var i=1; i<=num; i++){
-      sum += i;
+function sumaPrime(n) {
+    if (n === 2) {
+        return true;
     }
-    return sum * 4 / 2 - 2;
-  }
+    if (n < 2 || !(n % 2)) {
+        return false;
+    }
+    for (let i = 3; i <= n - 1; i++) {
+        if (n % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
 
 
 // exercitiu 8
