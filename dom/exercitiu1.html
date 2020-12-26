@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = ["asad", "dasdassad"];
+        function draw(){
+            let str = "";
+            for(let i = 0; i<arr.length;i++){
+                str+= ` <li>${arr[i]}</li>`
+            }
+            let ul = document.querySelector("ul");
+            ul.innerHTML = str;
+        }
+        function add(){
+            let input = document.querySelector("input");
+            let val = input.value;
+            draw();
+            if (val !== ""){
+                arr.push(val);
+                draw();
+                input.value = "";
+            }
+        }
+        function sum (){
+            var input1 = document.querySelector("#nr1 ");
+            var val1=input1.value;
+            var input2 = document.querySelector("#nr2 ");
+            var val2=input2.value;
+            
+            let p = document.querySelector("p");
+            p.innerHTML = Number(val1) + Number(val2);
+        }
+       
+    </script>
+</head>
+<body onload="draw();">
+    <input type="text">
+        <button onclick="add();">Adauga</button>
+    <ul id="lista">
+        
+    </ul>
+    <input type="text" id="nr1">
+    <input type="text" id="nr2">
+    <button onclick="sum();">aduna</button>
+    <p></p>
+</body>
+</html>

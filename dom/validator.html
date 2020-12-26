@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat</title>
+	<style>
+		.mandatory{
+			color:red;
+			
+		}
+		#xxx{
+			display:flex;
+		}
+		.invalid{
+			background-color:#ff8f8f;
+			border-color:red;
+			border-radius:5px;
+		}
+		.valid{
+			background-color:green;
+			border-color:green;
+			border-radius:5px;
+		}
+		.hidden{
+			display:none !important;
+		}
+		.errorMessage {
+			background-color:#ff8f8f;
+			border-color:red;
+			display: none;
+			visibility: hidden;
+		}
+		.errorMessage.visible{
+			display: block;
+			visibility: visible;
+		}
+		/*.invalid + .errorMessage {
+			display: block;
+		}*/
+		input[type="checkbox"].invalid + *{
+			color: red;
+		}
+	</style>
+	<script>
+		function minMaxLength(elem, event, minLength, maxLength){
+			let value = elem.value;
+			let errorMessage = elem.nextElementSibling;
+
+			if(value.length<minLength || value.length>maxLength){
+				//este eroare;
+				elem.classList.add("invalid");
+				errorMessage.classList.add("visible");
+				elem.classList.remove("valid");
+			} else {
+				elem.classList.remove("invalid");
+				errorMessage.classList.remove("visible");
+				elem.classList.add("valid");
+			}
+		}
+		function clearInvalid(elem){
+			let errorMessage = elem.nextElementSibling;
+			elem.classList.remove("valid");
+			elem.classList.remove("invalid");
+			errorMessage.classList.remove("visible");
+		}
+		function onKey(elem, event){
+			if(elem.value.length>=10 || (event.key>="0" && event.key<="9")){
+				event.preventDefault();
+			}
+		}
+		function validateForm(form, event){
+			//daca nu pun preventDefault aici atunci pagina se reincarca
+			event.preventDefault();
+
+			//declansez validarea la campurile din formular
+			let fields = document.querySelectorAll ("[name]");
+			for(let i = 0; i<fields.length; i++){
+				let elem = fields[i];
+				elem.onblur(event);
+			}
+			//verific daca formularul este valid sau nu sa dau prevent default
+			if(document.querySelectorAll(".invalid").length === 0){
+
+			}else {
+				event.preventDefault();
+			}
+		}
+		function isChecked(elem, event){
+			if(!elem.checked){
+				elem.classList.add(".invalid");
+			}else {
+				elem.classList.remove(".invalid");
+			}
+		}
+	</script>
+<body>
+	<form onsubmit="validateForm(this, event);">
+		<label>
+			<span>Nume<span class="mandatory">*</span></span>
+			<input type="text" name="nume" onkeypress="onKey(this, event);" onfocus="clearInvalid(this, event);" onblur="minMaxLength(this, event, 3, 10);"/>
+			<div class="errorMessage">Numele trebuie sa contina cel putin 3 caractere.</div>
+		</label> <br>
+		<label>
+			<span>Prenume<span class="mandatory">*</span></span>
+			<input type="text" name="prenume" onfocus="clearInvalid(this, event);" onblur="minMaxLength(this, event, 3, 10);"/>
+			<div class="errorMessage">Prenume trebuie sa contina cel putin 3 caractere.</div>
+		</label> <br>
+		<label>
+			<span>Adresa<span class="mandatory">*</span></span>
+			<textarea name="adresa" onfocus="clearInvalid(this, event);" onblur="minMaxLength(this, event, 10, 100);"></textarea>
+			<div class="errorMessage">Adresa trebuie sa contina cel putin 10 caractere.</div>
+		</label> <br>
+		<label>
+			<input type="checkbox" name="adresa" onblur="isChecked(this, event);"></input>
+			<span>Trebuie sa validezi termenii si conditiile<span class="mandatory">*</span></span>
+		</label> <br>
+		<input type="submit" value="Salveaza">
+	</form>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Dom</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        #chatMessages{
+            flex: 1;
+            overflow: auto;
+            background-color: teal;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        #chatBox{
+            height: 75px;
+            display: flex;
+        }
+        #chatBox>textarea{
+            height: 100%;
+            flex: 1;
+            box-sizing: border-box;
+        }
+        #chatBox>button{
+            width: 75px;
+            font-size: 1.2em;
+        }
+        .message{
+            padding: 5px;
+            border: 1px solid darkgray;
+            border-radius: 10px;
+            background-color: white;
+            margin: 5px;
+        }
+    </style>
+    <script>
+        let persoana = {
+            nume : "Dorel",
+            inaltime: 1.79,
+            varsta:26,
+            profesie:"Programator",
+            skilluri:["Javascript", "CSS", "Html"],
+            adresa: {
+                localitate:"SM",
+                judet: "SM"
+                numa:"sadas",
+                bloc:"dasdas",
+            }
+        }
+
+        let message = [
+            {
+                message :"Primul mesaj",
+                user : "Dorel",
+                data:"2020-12-08 20:15:30",
+            }
+            {
+                message :"Primul mesaj",
+                user : "Flori",
+                data:"2020-12-08 20:15:30",
+            }
+            {
+                message :"Primul mesaj",
+                user : "Ion",
+                data:"2020-12-08 20:15:30",
+            }
+        ];
+
+        let message = [
+            "asasad dasda asdqw",
+            "dasoduhqaioeuqieu",
+            "iuoyeqiw qwieyqwi",
+            "eoqwueoqwe"
+        ];
+        function draw(){
+           let user = "Sistem";
+            for(let i = message.length-1; i>=0; i--){
+                str +=`<div class="message">
+                         <div class="user">${user}</div>
+                         <div class="content">${message[i]}</div>
+                    </div> `;
+            }
+              
+        }
+
+        // function addMessage(){
+        //    let textarea = document.querySelector("#chatBox>textarea");
+        //    let val = textarea.value.trim();
+        //    let user = "Sistem";
+
+        //    let str =`<div class="message">
+        //                  <div class="user">${user}</div>
+        //                  <div class="content">${val}</div>
+        //             </div> `;
+        //     let chatMessages = document.querySelector("#chatMessages");
+        //     //innerHTML
+        //     //innerText   
+        //     chatMessages.innerHTML = str + chatMessages.innerHTML;     
+        // }
+    </script>
+</head>
+<body onload="draw">
+    <div id="chatMessages">
+        
+    </div>
+    <div id="chatBox">
+        <textarea></textarea>
+        <button onclick="addMessage();">Save</button>
+    </div>
+</body>
+</html>

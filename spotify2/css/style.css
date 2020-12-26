@@ -1,0 +1,14 @@
+.container-fluid .first-part-page {
+    background-color: rgb(255, 70, 50) !important;
+}
+img {
+    width: 150px;
+}
+.navRight a{
+    color: black;
+    size: 5px;
+    
+}
+.navRight a:hover{
+    color: grey;
+}
