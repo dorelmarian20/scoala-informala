@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Shopping list</h1>
+<button>Click to sort</button>
+<ul class="shoppingList">
+<li></li>
+</ul>
+<script>
+   document .getElementsByTagName("button")[0] .addEventListener("click", sortList);
+   function sortList() {
+      var list, i, sortFlag, LiEle, sorted;
+      list = document.querySelector(".animalList");
+      sortFlag = true;
+      while (sortFlag) {
+         sortFlag = false;
+         LiEle = list.getElementsByTagName("LI");
+         for (i = 0; i < LiEle.length - 1; i++) {
+            sorted = false;
+            if ( LiEle[i].innerHTML.toLowerCase() > LiEle[i + 1].innerHTML.toLowerCase() ) {
+               sorted = true;
+               break;
+            }
+         }
+         if (sorted) {
+            LiEle[i].parentNode.insertBefore(LiEle[i + 1], LiEle[i]);
+            sortFlag = true;
+         }
+      }
+   }
+</script>
+</body>
+</html>
