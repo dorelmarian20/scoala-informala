@@ -117,22 +117,10 @@ function filterTodo(e) {
   // 1 Remove all elmenets from the page based on array length
   // 2 Add/ Create new elements based on the new array items value
 
-
-  var movies = ["Reservoir Dogs", "Pulp Fiction", "Jackie Brown", 
-"Kill Bill", "Death Proof", "Inglourious Basterds"];
- 
-// storing our array as a string
-localStorage.setItem("quentinTarantino", JSON.stringify(movies));
- 
-// retrieving our data and converting it back into an array
-var retrievedData = localStorage.getItem("quentinTarantino");
-var movies2 = JSON.parse(retrievedData);
-
 function ascendentSort(){
   domTodosRemoval();
  
   //Sorting & Adding the newly sorted Element List to the dom
-  listItems = localStorage.getItem("arrayStorage");
   listItems.sort();
   console.log(listItems);
   
