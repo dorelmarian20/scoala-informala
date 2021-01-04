@@ -46,10 +46,10 @@ function deleteCheck(e) {
 }
 
 function sortList() {
-    var list = document.getElementById('myList');
+    let list = document.getElementById('myList');
 
-    var items = list.childNodes;
-    var itemsArr = [];
+    let items = list.childNodes;
+    let itemsArr = [];
     for (var i in items) {
         if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
             itemsArr.push(items[i]);
@@ -68,10 +68,10 @@ function sortList() {
 }
 
 function dscList(){
-    var list = document.getElementById('myList');
+    let list = document.getElementById('myList');
 
-    var items = list.childNodes;
-    var itemsArr = [];
+    let items = list.childNodes;
+    let itemsArr = [];
     for (var i in items) {
         if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
             itemsArr.push(items[i]);
