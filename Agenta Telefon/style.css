@@ -1,0 +1,12 @@
+body {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.nav-list{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+li{
+    cursor: pointer;
+}

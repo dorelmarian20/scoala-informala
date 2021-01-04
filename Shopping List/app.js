@@ -1,11 +1,13 @@
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
-const filterOption = document.querySelector(".filter-todo");
+const ascBtn = document.querySelector('.ascendent')
+const dscBtn = document.querySelector('.descendent');
 
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
-filterOption.addEventListener("click", filterTodo);
+ascBtn.addEventListener('click', sortList);
+dscBtn.addEventListener('click', dscList);
 
 function addTodo(event) {
     event.preventDefault();
@@ -43,27 +45,47 @@ function deleteCheck(e) {
     }
 }
 
-function filterTodo(e) {
-    const todos = todoList.childNodes;
-    todos.forEach(function(todo) {
-        switch (e.target.value) {
-            case "all":
-                todo.style.display = "flex";
-                break;
-            case "completed":
-                if (todo.classList.contains("completed")) {
-                    todo.style.display = "flex";
-                } else {
-                    todo.style.display = "none";
-                }
-                break;
-            case "uncompleted":
-                if (!todo.classList.contains("completed")) {
-                    todo.style.display = "flex";
-                } else {
-                    todo.style.display = "none";
-                }
-                break;
+function sortList() {
+    var list = document.getElementById('myList');
+
+    var items = list.childNodes;
+    var itemsArr = [];
+    for (var i in items) {
+        if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
+            itemsArr.push(items[i]);
         }
+    }
+
+    itemsArr.sort(function (a, b) {
+        return a.innerHTML == b.innerHTML
+            ? 0
+            : (a.innerHTML > b.innerHTML ? 1 : -1);
     });
+
+    for (i = 0; i < itemsArr.length; ++i) {
+        list.appendChild(itemsArr[i]);
+    }
 }
+
+function dscList(){
+    var list = document.getElementById('myList');
+
+    var items = list.childNodes;
+    var itemsArr = [];
+    for (var i in items) {
+        if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
+            itemsArr.push(items[i]);
+        }
+    }
+
+    itemsArr.sort(function (a, b) {
+        return a.innerHTML == b.innerHTML
+            ? 0
+            : (a.innerHTML > b.innerHTML ? 1 : -1);
+    });
+
+    for (i = itemsArr.length -1; i >= 0; i--) {
+        list.appendChild(itemsArr[i]);
+    }
+}
+
