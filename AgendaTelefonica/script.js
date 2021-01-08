@@ -8,10 +8,12 @@ var list = [
   }
   
   function addButton(){
-    document.querySelector("#new-contact").addEventListener("click", function(){
+    document.querySelector("#new-contact").addEventListener("click", function(e){
+      e.preventDefault();
       addItem();
     })
   }
+
   
   function draw(){
     let contactList = document.querySelector("#list");

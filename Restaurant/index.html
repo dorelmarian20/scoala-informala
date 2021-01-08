@@ -24,103 +24,26 @@
 		.menu-description{
 			flex:1;
 			padding:5px;
-        }
-        .hidden {
-            display: none;
-        }
+		}
+		.hidden{
+			display:none !important;
+		}
 	</style>
 	<script>
-		let lista = [
-			{
-				"poze":["https://www.agro.basf.ro/Pictures/migrated_pictures/imagini_articole_pictures/articol_seo_cultura_porumbului_pictures/cultura_porumb_hibrizi_750x422.jpg"],
-				"nume": "Ciolan",
-				"ingrediente": [
-					{
-						"numeIngredient":"carne pui",
-						"valoare": 500,
-						"um": "g"
-					},
-					{
-						"numeIngredient":"oua",
-						"valoare": 5,
-						"um": "buc"
-					}
-				],
-				"preparare":"......",
-				"timpPreparare":75,
-			},
-			{
-				"poze":["https://cich.ro/wp-content/uploads/2017/09/Grau1.jpg"],
-				"nume": "XXXX",
-				"ingrediente": [
-					{
-						"numeIngredient":"carne pui",
-						"valoare": 200,
-						"um": "g"
-					},
-					{
-						"numeIngredient":"oua",
-						"valoare": 5,
-						"um": ""
-					},
-					{
-						"numeIngredient":"oua",
-						"valoare": 5,
-						"um": ""
-					}
-				],
-				"preparare":"......",
-				"timpPreparare":75,
-			},
-			{
-				"poze":["https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Pylon_ds.jpg/220px-Pylon_ds.jpg"],
-				"nume": "TYYYYYY",
-				"ingrediente": [
-					{
-						"numeIngredient":"carne pui",
-						"valoare": 100,
-						"um": "g"
-					},
-					{
-						"numeIngredient":"carne pui",
-						"valoare": 100,
-						"um": "g"
-					},
-					{
-						"numeIngredient":"oua",
-						"valoare": 5,
-						"um": ""
-					}
-				],
-				"preparare":"......",
-				"timpPreparare":75,
-			},
-			{
-				"poze":[],
-				"nume": "TYYYYYY",
-				"ingrediente": [
-					{
-						"numeIngredient":"carne pui",
-						"valoare": 100,
-						"um": "g"
-					},
-					{
-						"numeIngredient":"carne pui",
-						"valoare": 100,
-						"um": "g"
-					},
-					{
-						"numeIngredient":"oua",
-						"valoare": 5,
-						"um": ""
-					}
-				],
-				"preparare":"......",
-				"timpPreparare":75,
-			}
-			
-		];
+		let lista = [];
+		
+		let url = "https://restaurantul-meu-49822-default-rtdb.europe-west1.firebasedatabase.app/";
+		
+		
+		async function getLista() {
+		  const response = await fetch(url+".json");
+		  lista = await response.json();
+		  draw();
+		}
+		
 		function draw(){
+			let cuvantCautat = document.querySelector('[name="search"]').value;
+		
 			var str = "";
 			for(let i=0;i<lista.length;i++){
 				let ingrediente = lista[i].ingrediente;
@@ -129,51 +52,51 @@
 				for(let j=0;j<ingrediente.length;j++){
 					strIngrediente += `${ingrediente[j].valoare} ${ingrediente[j].um} ${ingrediente[j].numeIngredient}, `
 				}
-                let poza;
-                if(lista[i].poze.length===0){
-                    poza = "https://gfsstore.com/wp-content/themes/gfsstore.com/images/no_image_available.png";
-                }else {
-                    poza = lista[i].poze[0];
-                }
-                
-				str+=`
-					<div class="menu-item">
-						<div class="menu-img">
-							<img src="${lista[i].poze[0]}" />
+				let poza;
+				if (lista[i].poze===undefined || lista[i].poze.length===0) {
+					poza="https://gfsstore.com/wp-content/themes/gfsstore.com/images/no_image_available.png";
+				} else {
+					poza=lista[i].poze[0];
+				}
+				if(strIngrediente.includes(cuvantCautat)){
+					str+=`
+						<div class="menu-item">
+							<div class="menu-img">
+								<img src="${poza}" />
+							</div>
+							<div class="menu-description">
+								<div>${lista[i].nume}</div>
+								<div>${strIngrediente}</div>
+							</div>
+							<a href="detalii.html?id=${i}" ><button>Detalii</button></a>
 						</div>
-						<div class="menu-description">
-							<div>${lista[i].nume}</div>
-							<div>${strIngrediente}</div>
-						</div>
-						<button>Detalii</button>
-					</div>
-				`
+					`
+				}
 			}
-            document.querySelector("#menu-list").innerHTML= str;
-        }
-        function cauta (){
-           let cuvatCautat= document.querySelector('[name="search"]').value;
-           let menuItems = document.querySelectorAll(".menu-item");
-
-           for(let i = 0;i<menuItems.length;i++){
-               let menuItem = menuItems[i];
-               let text = menuItem.querySelector("menu-description div:nth-child(2)").innerText;
-               if (!text.includes(cuvatCautat)){
-                    menuItem.classList.add("hidden");
-               }else {
-                   menuItem.classList.remove("hidden");
-               }
-           }
-        }
-		
+			document.querySelector("#menu-list").innerHTML= str;
+		}
+		function cauta(){
+			let cuvantCautat = document.querySelector('[name="search"]').value;
+			let menuItems = document.querySelectorAll(".menu-item");
+			
+			for(let i=0;i<menuItems.length;i++){
+				let menuItem = menuItems[i];
+				let text = menuItem.querySelector(".menu-description div:nth-child(2)").innerText;
+				if(!text.includes(cuvantCautat)){
+					menuItem.classList.add("hidden");
+				}else{
+					menuItem.classList.remove("hidden");
+				}
+			}
+		}
 	</script>
 </head>
-<body onload="draw()">
+<body onload="getLista();">
 	<header><h1>Cald si Bun</h1></header>
 	<section>
 		<input type="text" name="search" />
 		<button onclick="cauta();">Cauta in ingrediente</button>
-		<button onclick="draw();">Cauta in ingrediente2</button>
+		<button onclick="draw();">Cauta in ingrediente 2</button>
 	</section>
 	<section id="menu-list">
 	</section>
