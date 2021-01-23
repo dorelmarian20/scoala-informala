@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Restaurantul meu</title>
+	
+	<link rel="stylesheet" href="loading.css">
 	<style>
 		.menu-item{
 			display:flex;
@@ -28,6 +30,20 @@
 		.hidden{
 			display:none !important;
 		}
+		
+		.lds-ripple div{
+			border-color:red;
+		}
+		#loading{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			width:200px;
+			height:200px;
+		}
 	</style>
 	<script>
 		let lista = [];
@@ -36,27 +52,62 @@
 		
 		
 		async function getLista() {
-		  const response = await fetch(url+".json");
-		  lista = await response.json();
-		  draw();
+			//aici afisez loading
+		
+			document.querySelector("#loading").classList.remove("hidden");
+			
+			const response = await fetch(url+".json");
+			lista = await response.json();
+		  
+			document.querySelector("#loading").classList.add("hidden");
+
+			draw();
 		}
+		
+		//parcurgere obiect
+		/*for(let i in obj){
+			if(!obj.hasOwnProperty(i)){
+				continue;
+			}
+			//vine codul aici
+		}
+		
+		{
+			"nume":"xxxx",
+			"prenume":"yyyy"
+		}
+		
+		[
+			["nume","xxxx"],
+			["prenume","yyyy"]
+		]
+		
+		for(let [key,valoare] of Object.entries(obj)){
+		
+		}*/
+		
+		
+		
+		
+		
 		
 		function draw(){
 			let cuvantCautat = document.querySelector('[name="search"]').value;
 		
 			var str = "";
-			for(let i=0;i<lista.length;i++){
-				let ingrediente = lista[i].ingrediente;
+			//for(let i=0;i<lista.length;i++){
+			for(let [i,preparat] of Object.entries(lista)){
+				let ingrediente = preparat.ingrediente;
 				let strIngrediente = "";
 				
 				for(let j=0;j<ingrediente.length;j++){
 					strIngrediente += `${ingrediente[j].valoare} ${ingrediente[j].um} ${ingrediente[j].numeIngredient}, `
 				}
 				let poza;
-				if (lista[i].poze===undefined || lista[i].poze.length===0) {
+				if (preparat.poze===undefined || preparat.poze.length===0) {
 					poza="https://gfsstore.com/wp-content/themes/gfsstore.com/images/no_image_available.png";
 				} else {
-					poza=lista[i].poze[0];
+					poza=preparat.poze[0];
 				}
 				if(strIngrediente.includes(cuvantCautat)){
 					str+=`
@@ -65,7 +116,7 @@
 								<img src="${poza}" />
 							</div>
 							<div class="menu-description">
-								<div>${lista[i].nume}</div>
+								<div>${preparat.nume}</div>
 								<div>${strIngrediente}</div>
 							</div>
 							<a href="detalii.html?id=${i}" ><button>Detalii</button></a>
@@ -92,6 +143,9 @@
 	</script>
 </head>
 <body onload="getLista();">
+	<div id="loading" class="lds-ripple"><div></div><div></div></div>
+
+
 	<header><h1>Cald si Bun</h1></header>
 	<section>
 		<input type="text" name="search" />

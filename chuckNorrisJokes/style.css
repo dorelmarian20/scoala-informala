@@ -1,0 +1,25 @@
+body {
+  background: rgb(230, 142, 79) !important;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%;
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 20px;
+}
+#options {
+  margin: 10px;
+  height: 37px;
+}
+#text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,13 @@
+.container {
+  background: rgb(80, 255, 217);
+  width: 550px;
+  position: absolute;
+  left: 35%;
+  right: 0;
+  bottom: 35%;
+}
+.formInput {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}

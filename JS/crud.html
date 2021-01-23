@@ -11,41 +11,32 @@
 		}
 	</style>
 	<script>
+		let url = "https://crud-956c2.europe-west1.firebasedatabase.app/bogdan-nourescu/"
+	
 		//CRUD = Create, Read, Update, Delete;
-		let inregistrari = [
-			{
-				"link": "https://scoalainformala.zoom.us/rec/share/8vsJX8bIMIoGBLPSpip8T0WTOd-o0zjpOjG7HZGWvUPUB--0VUtVY7jMVB_lwGAj.RWKXWofIw9ZY3hSK",
-				"parola": "kP@5iyVI",
-				"data": "2020-12-15"
-			},
-			{
-				"link": "https://scoalainformala.zoom.us/rec/share/8vsJX8bIMIoGBLPSpip8T0WTOd-o0zjpOjG7HZGWvUPUB--0VUtVY7jMVB_lwGAj.RWKXWofIw9ZY3hSK",
-				"parola": "kP@5iyVI",
-				"data": "2020-12-14"
-			},
-			{
-				"link": "https://scoalainformala.zoom.us/rec/share/8vsJX8bIMIoGBLPSpip8T0WTOd-o0zjpOjG7HZGWvUPUB--0VUtVY7jMVB_lwGAj.RWKXWofIw9ZY3hSK",
-				"parola": "kP@5iyVI",
-				"data": "2020-12-13"
-			},
-			{
-				"link": "https://scoalainformala.zoom.us/rec/share/8vsJX8bIMIoGBLPSpip8T0WTOd-o0zjpOjG7HZGWvUPUB--0VUtVY7jMVB_lwGAj.RWKXWofIw9ZY3hSK",
-				"parola": "kP@5iyVI",
-				"data": "2020-12-12"
-			}
-		];
+		let inregistrari = {};
 		let indexEditare = -1;
+		
+		async function getInregistrari() {
+			const response = await fetch(url+".json");
+			inregistrari = await response.json();
+			if(inregistrari===null){
+				inregistrari = {};
+			}
+			draw();
+		}
+		
 		function draw(){
 			let str = "";
-			for(let i=0;i<inregistrari.length;i++){
+			for(let [id, inregistrare] of Object.entries(inregistrari)){
 				str+=`
 					<tr>
-						<td>${inregistrari[i].data}</td>
-						<td><a href="${inregistrari[i].link}" target="_blank">Link</a></td>
-						<td>${inregistrari[i].parola}</td>
+						<td>${inregistrare.data}</td>
+						<td><a href="${inregistrare.link}" target="_blank">Link</a></td>
+						<td>${inregistrare.parola}</td>
 						<td>
-							<img class="delete" src="icons/icon-delete-16.jpg" onclick="del(${i});" />
-							<img class="edit" src="icons/edit.png" onclick="edit(${i});" />
+							<img class="delete" src="icons/icon-delete-16.jpg" onclick="del('${id}');" />
+							<img class="edit" src="icons/edit.png" onclick="edit('${id}');" />
 						</td>
 					</tr>
 				`
@@ -69,16 +60,25 @@
 		/**
 			Preia informatiile formular si le actualizeaza in array;
 		*/
-		function editPasul2(){
+		async function editPasul2(){
 			if(indexEditare===-1){
 				return;
 			}
-		
-			let inregistrare = inregistrari[indexEditare];
+			let inregistrare = {};
 			inregistrare.link = document.querySelector("[name='link']").value;
 			inregistrare.parola = document.querySelector("[name='parola']").value;
 			inregistrare.data = document.querySelector("[name='data']").value;
-			draw();
+			
+			const response = await fetch(url+indexEditare+".json", {
+				method:"put",
+				body: JSON.stringify(inregistrare),
+			    headers: {
+				  'Content-Type': 'application/json'
+				},
+			});
+			await response.json();
+			
+			await getInregistrari();
 			
 			cancel();
 		}
@@ -95,25 +95,37 @@
 			
 			hideForm();
 		}
-		function del(idx){
+		async function del(idx){
 			if(confirm(`Esti sigur ca vrei sa stergi inregistrarea de la data de ${inregistrari[idx].data} ?`)){
-				inregistrari.splice(idx,1);
-				draw();
+				const response = await fetch(url+idx+".json", {
+					method:"delete"
+				});
+				await response.json();
+				
+				await getInregistrari();
 			}
 			
 		}
-		function adauga(){
+		async function adauga(){
 			let link = document.querySelector("[name='link']").value;
 			let parola = document.querySelector("[name='parola']").value;
 			let data = document.querySelector("[name='data']").value;
 			
-			inregistrari.push({
-				"link": link,
-				"parola": parola,
-				"data": data
-			});
 			
-			draw();
+			const response = await fetch(url+".json", {
+				method:"post",
+				body: JSON.stringify({
+					"link": link,
+					"parola": parola,
+					"data": data
+				}),
+			    headers: {
+				  'Content-Type': 'application/json'
+				},
+			});
+			await response.json();
+			
+			await getInregistrari();
 			hideForm();
 		}
 		function hideForm(){
@@ -128,7 +140,7 @@
 		}
 	</script>
 </head>
-<body onload="draw();">
+<body onload="getInregistrari();">
 	<form onsubmit="event.preventDefault();adauga();" class="hidden" >
 		<label>
 			Link:<input type="text" name="link"/>

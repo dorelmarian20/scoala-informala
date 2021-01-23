@@ -1,0 +1,121 @@
+* {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ::-webkit-scrollbar {
+      width: 0px; 
+      background: transparent;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    background-image: url(bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center fixed;
+    overflow: hidden;
+  }
+  
+  #wrapper {
+    margin-top: 50px;
+    min-height: 900px;
+    width: 564px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #header {
+    padding: 30px 0;
+    position: fixed;
+    color: black;
+  }
+  
+  .container {
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(70, 70, 70, 0.767);
+    margin-bottom: 30px;
+  }
+  
+  .input-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: fixed;
+    margin-top: 100px;
+    width: 500px;
+  }
+  
+  .name, .phone, .add {
+    margin: 20px 5px  ;
+    font-weight: bold;
+  }
+  
+  .bkg-white {
+    background-color: #f0f0f0;
+  }
+  
+  .clr-white{
+    color: #f0f0f0;
+  }
+  
+  .add button {
+    border: 0;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .add button:hover {
+    background-color: #0093b5;
+    color: #f0f0f0;
+    transition-duration: 0.3s;
+    cursor: pointer;
+  }
+  
+  .name input, .phone input {
+    height: 30px;
+    border-radius: 5px;
+    border: 0;
+    padding-left: 5px;
+  }
+  
+  #list-container {
+    width: 90%;
+    height: 580px;
+    margin-top: 55%;
+    overflow: scroll;
+  }
+  
+  #list {
+    list-style: none;
+  }
+  
+  .item {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .item-np {
+    font-size: 20px;
+  }
+  
+  .fa-edit, .fa-trash-alt {
+    margin: 0 5px;
+    zoom: 1.5;
+    color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  .fa-edit:hover {
+    color: #03e020;
+  }
+  
+  .fa-trash-alt:hover{
+    color: #e00316;
+  }

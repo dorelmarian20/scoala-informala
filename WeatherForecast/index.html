@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="containe">
+      <label for="city">Enter your city</label>
+      <input type="text" name="city" id="city" placeholder="Enter your city..." autocomplete="off">
+      <button type="submit" class="weatherNowBtn" onclick="displayWeather()">Weather Now</button>
+      <button type="submit" class="weatherForecastBtn" onclick="displayForecast()">Weather Forecast</button>
+    </div>
+    <div class="weatherDraw hidden">
+      <div class="date">
+        <img id="icon"></br>
+        Description:<span id="description"></span></br> 
+        Humidity:<span id="humidity"></span></br>
+        Pressure:<span id="pressure"></span></br>
+        Current temperature:<span id="temp"></span></br>
+        Low temp:<span id="min"></span></br>
+        Max temp:<span id="max"></span></br>
+      </div>
+        <div id="map">
+            <iframe id="coordonateHarta" width="700" height="250" frameborder="0" style="border:0"></iframe>
+        </div>
+    </div>
+
+    <div id="forecast hidden2">
+      <h3>Forecast for the next days</h3>
+      <hr>
+      <div id="dateForecast">
+          <div id="day1"></div>
+          <div id="day2"></div>
+          <div id="day3"></div>
+          <div id="day4"></div>
+          <div id="day5"></div>
+          <div id="day6"></div>
+      </div>
+  </div>
+    <script src="app.js"></script>
+</body>
+</html>
