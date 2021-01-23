@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <!--Import Google Icon Font-->
     <!-- CSS only -->
     <link
@@ -18,7 +22,7 @@
     <title>Chuck Norris Jokes</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container container-fluid">
       <select id="options">
         <option>Nerdy</option>
         <option>Explicit</option>
@@ -26,7 +30,7 @@
       </select>
       <button onclick="draw();" class="btn btn-primary">Jokes</button>
     </div>
-    <p id="text"></p>
+    <p id="text" class="container-fluid"></p>
     <script src="./app.js"></script>
   </body>
 </html>
