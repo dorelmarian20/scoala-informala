@@ -1,96 +1,81 @@
-var informatii = [];
-var date = [];
-console.log(informatii);
-console.log(date);
-function afiseazaVremea() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      informatii = JSON.parse(this.responseText);
-      console.log(informatii);
-      deseneazaTabel();
-    }
-  };
-  xhttp.open(
-    "GET",
-    `https://api.openweathermap.org/data/2.5/weather?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=${
-      document.getElementById("oras").value
-    }`,
-    true
+var stareaCurenta = {};
+
+async function weatherNow() {
+  var oras = document.querySelector(".oras").value;
+  var response = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=${oras}`
   );
-  xhttp.send();
+  window.stareaCurenta = await response.json();
+  draw();
 }
-function deseneazaTabel() {
-  document.getElementById(
-    "icon"
-  ).src = `http://openweathermap.org/img/w/${informatii.weather[0].icon}.png`;
-  document.getElementById("descriere").innerHTML =
-    informatii.weather[0].description;
-  document.getElementById("presiune").innerHTML = informatii.main.pressure;
-  document.getElementById("umiditate").innerHTML = informatii.main.humidity;
-  document.getElementById("temp").innerHTML = informatii.main.temp;
-  document.getElementById("min").innerHTML = informatii.main.temp_min;
-  document.getElementById("max").innerHTML = informatii.main.temp_max;
-  document.getElementById(
-    "coordonateHarta"
-  ).src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDNCgmnHqiOuRvdBGN8NapDtH3wZb-Xikk
-                        &q=${informatii.coord.lat},${informatii.coord.lon}&zoom=12`;
-}
-function afiseazaPrognoza() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      date = JSON.parse(this.responseText);
-      console.log(date);
-      deseneazaTabel2();
-    }
-  };
 
-  xhttp.open(
-    "GET",
-    `https://api.openweathermap.org/data/2.5/forecast?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=${
-      document.getElementById("oras").value
-    }`,
-    true
+function draw() {
+  document.querySelector(
+    ".imagine"
+  ).src = `http://openweathermap.org/img/w/${stareaCurenta.weather[0].icon}.png`;
+  document.querySelector(".descriere").innerHTML =
+    stareaCurenta.weather[0].description;
+  document.querySelector(".umiditate").innerHTML =
+    stareaCurenta.main.temp + "%";
+  document.querySelector(".presiune").innerHTML =
+    stareaCurenta.main.pressure + " hPa";
+  document.querySelector(".tempCurenta").innerHTML =
+    stareaCurenta.main.temp + "&#8451";
+  document.querySelector(".minZilei").innerHTML =
+    stareaCurenta.main.temp_min + "&#8451";
+  document.querySelector(".maxZilei").innerHTML =
+    stareaCurenta.main.temp_max + "&#8451";
+  document.querySelector(
+    ".harta"
+  ).src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDd8I_yVKeCO3Nn7JAoxKXKdLdJcsIcF3I&q=${stareaCurenta.name}`;
+}
+
+async function weatherForecast() {
+  var oras = document.querySelector(".oras").value;
+  var response = await fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=${oras}`
   );
-  xhttp.send();
+  stareaCurenta = await response.json();
+  drawForecast();
 }
-function deseneazaTabel2() {
-  var contor = 0;
-  var ziuaAnterioara = null;
-  var str2 = "";
-  var str = "";
 
-  for (var i = 0; i < date.list.length; i++) {
-    if (ziuaAnterioara !== date.list[i].dt_txt.substring(0, 10)) {
-      if (contor !== 0) {
-        str = `<h3>Ziua: ${date.list[i].dt_txt.substring(8, 10)}/${date.list[
-          i
-        ].dt_txt.substring(5, 7)}/${date.list[i].dt_txt.substring(0, 4)}</h3>
-                               `;
+function drawForecast() {
+  document.querySelector(".forecastCity").innerHTML = stareaCurenta.city.name;
+  document.querySelector(".forecastCountry").innerHTML =
+    stareaCurenta.city.country;
+  var dayElements = document.querySelectorAll(".day");
+  dayElements.forEach(function (day) {
+    day.innerHTML = "";
+  });
+  var dayIndex = 0;
+  var dateTime = stareaCurenta.list[0].dt_txt.split(" ");
+  var day = dateTime[0];
+  dayElements[dayIndex].innerHTML =
+    dayElements[dayIndex].innerHTML + `<h3>${dateTime[0]}</h3>`;
 
-        document.getElementById("ziua" + contor).innerHTML = str + str2;
-        str2 = "";
-      }
-
-      contor++;
-
-      ziuaAnterioara = date.list[i].dt_txt.substring(0, 10);
-    }
-    str2 += `<img id="icon" src="http://openweathermap.org/img/w/${
-      date.list[i].weather[0].icon
-    }.png"><br />  
-                            Ora:<span id="ora">${date.list[i].dt_txt.substring(
-                              11,
-                              16
-                            )}</span><br />
-                            Temperatura:<span id="tempPrognoza"></span>${
-                              date.list[i].main.temp
-                            }<br />
-                            Descriere:<span id="descrierePrognoza">${
-                              date.list[i].weather[0].description
-                            }</span><br />`;
+  for (let i = 0; i < parseInt(dateTime[1]) / 3; i++) {
+    dayElements[dayIndex].innerHTML =
+      dayElements[dayIndex].innerHTML + `<div></div>`;
   }
 
-  document.getElementById("ziua" + contor).innerHTML = str + str2;
+  for (let i = 0; i < stareaCurenta.list.length; i++) {
+    let dateTime = stareaCurenta.list[i].dt_txt.split(" ");
+    var date = dateTime[0];
+    var time = dateTime[1];
+
+    if (day !== date) {
+      dayIndex++;
+      day = date;
+      dayElements[dayIndex].innerHTML =
+        dayElements[dayIndex].innerHTML + `<h3>${date}</h3>`;
+    }
+    dayElements[dayIndex].innerHTML =
+      dayElements[dayIndex].innerHTML +
+      `<div >
+                    <img src="http://openweathermap.org/img/w/${stareaCurenta.list[i].weather[0].icon}.png">
+                    <p>Time: ${time}</p>
+                    <p>Current Temp: ${stareaCurenta.list[i].main.temp} &#8451</p>
+                    <p>Description: ${stareaCurenta.list[i].weather[0].description}</p>
+                </div>`;
+  }
 }

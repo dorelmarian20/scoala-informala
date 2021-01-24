@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 100px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.main-title {
+    padding: 0 0 5px 0;
+    font-size: 50px;
+}
+.city{
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 30%;
+  border: none;
+  border: 2px solid rgb(96, 85, 194);
+}
+.buttons {
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background: rgb(96, 85, 194);
+    color: white;
+    cursor: pointer;
+}
+
+.container {
+display: flex;}
