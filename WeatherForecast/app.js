@@ -1,11 +1,17 @@
-var currentState = {};
+let currentState = {};
 
 async function weatherNow() {
-  var city = document.querySelector(".city").value;
-  var response = await fetch(
+  let hiddenItem = document.querySelector(".hidden");
+  let city = document.querySelector(".city").value;
+  let response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?appid=4bfd7f1b71e329b4717dd5ddb19d9e45&units=metric&q=${city}`
   );
   currentState = await response.json();
+  if(city.value === null){
+    hiddenItem.classList.add("hidden");
+  }else{
+    hiddenItem.classList.remove("hidden");
+  }
   draw();
 }
 
@@ -25,9 +31,15 @@ function draw() {
 }
 
 async function weatherForecast() {
+  let hiddenItem = document.querySelector(".hidden");
   let city = document.querySelector(".city").value;
   let response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?appid=4bfd7f1b71e329b4717dd5ddb19d9e45&units=metric&q=${city}`);
   currentState = await response.json()
+  if(city.value === null){
+    hiddenItem.classList.add("hidden");
+  }else{
+    hiddenItem.classList.remove("hidden");
+  }
   drawForecast();
 }
 function drawForecast() {

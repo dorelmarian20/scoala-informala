@@ -8,6 +8,17 @@ body {
     margin-top: 100px;
     margin-left: 25%;
     margin-right: 25%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .4);		
+	border-radius: 10px;
+	background: #fff;
+			
+}
+.inputField{
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 .main-title {
     padding: 0 0 5px 0;
@@ -16,7 +27,7 @@ body {
 .city{
   font-size: 1rem;
   padding: 0.5rem;
-  width: 30%;
+  width: 40%;
   border: none;
   border: 2px solid rgb(96, 85, 194);
 }
@@ -29,5 +40,11 @@ body {
     cursor: pointer;
 }
 
-.container {
-display: flex;}
+.hidden {
+    display: none;
+}
+.forecast-weather{
+    display: flex;
+    margin-bottom: 10px;
+    
+}
