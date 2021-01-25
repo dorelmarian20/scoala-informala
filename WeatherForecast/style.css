@@ -1,30 +1,30 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    margin-top: 100px;
-    margin-left: 25%;
-    margin-right: 25%;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .4);		
-	border-radius: 10px;
-	background: #fff;
-			
+  font-family: "Roboto", sans-serif;
+  margin-top: 100px;
+  margin-left: 25%;
+  margin-right: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  background: #fff;
 }
-.inputField{
-    margin-top: 10px;
-    margin-bottom: 30px;
+.inputField {
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 .main-title {
-    padding: 0 0 5px 0;
-    font-size: 50px;
+  padding: 0 0 5px 0;
+  font-size: 50px;
 }
-.city{
+.city {
   font-size: 1rem;
   padding: 0.5rem;
   width: 40%;
@@ -32,19 +32,19 @@ body {
   border: 2px solid rgb(96, 85, 194);
 }
 .buttons {
-    border: none;
-    padding: 0.5rem;
-    font-size: 1rem;
-    background: rgb(96, 85, 194);
-    color: white;
-    cursor: pointer;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background: rgb(96, 85, 194);
+  color: white;
+  cursor: pointer;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
-.forecast-weather{
-    display: flex;
-    margin-bottom: 10px;
-    
+.forecast-weather div {
+  display: inline-grid;
+  margin: 15px;
+  grid-template-rows: auto;
 }

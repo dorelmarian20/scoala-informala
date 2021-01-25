@@ -43,3 +43,19 @@ header h2 {
   color: white;
   cursor: pointer;
 }
+
+.gallery-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: grey;
+}
+.gallery-info a {
+  color: grey;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  padding: 2rem 0rem;
+}
