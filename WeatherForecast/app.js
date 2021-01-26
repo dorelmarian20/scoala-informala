@@ -62,10 +62,12 @@ function drawForecast() {
   let dateTime = currentState.list[0].dt_txt.split(" ");
   let day = dateTime[0];
 
-  dayElements[dayIndex].innerHTML = `<h3>${dateTime[0]}</h3>`;
+  dayElements[dayIndex].innerHTML =
+    dayElements[dayIndex].innerHTML + `<h3>${dateTime[0]}</h3>`;
 
   for (let i = 0; i < parseInt(dateTime[1]) / 3; i++) {
-    dayElements[dayIndex].innerHTML = `<div></div>`;
+    dayElements[dayIndex].innerHTML =
+      dayElements[dayIndex].innerHTML + `<div></div>`;
   }
 
   for (let i = 0; i < currentState.list.length; i++) {
@@ -77,10 +79,13 @@ function drawForecast() {
       dayIndex++;
       day = date;
 
-      dayElements[dayIndex].innerHTML = `<h3>${date}</h3>`;
+      dayElements[dayIndex].innerHTML =
+        dayElements[dayIndex].innerHTML + `<h3>${date}</h3>`;
     }
 
-    dayElements[dayIndex].innerHTML = `<div >
+    dayElements[dayIndex].innerHTML =
+      dayElements[dayIndex].innerHTML +
+      `<div >
                   <img src="http://openweathermap.org/img/w/${currentState.list[i].weather[0].icon}.png">
                   <p>Time: ${time}</p>
                   <p>Current Temp: ${currentState.list[i].main.temp} &#8451</p>

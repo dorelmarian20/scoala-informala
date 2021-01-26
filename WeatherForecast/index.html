@@ -3,61 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
     <title>Weather App</title>
   </head>
   <body>
-  <div class="conainer">
-    
-    <div class="inputField">
-      <h2 class="main-title">Weather App</h2>
-      <input type="text" name="search" class="city" placeholder="Enter city name"/>
-      <span
-        ><input
-          type="button"
-          value="Show Weather"
-          name=""
-          id="weather-now"
-          class="buttons"
-          onclick="weatherNow()"
-      /></span>
-      <span
-        ><input
-          type="button"
-          value="Show Forecast"
-          name=""
-          id="weather-forecast"
-          class="buttons"
-          onclick="weatherForecast()"
-      /></span>
-    </div>
-    <div class="hidden">
-      <h3 class="title">Weather Now</h3>
-      <img src="" alt="" class="image" />
-      <p>Description: <span class="description"></span></p>
-      <p>Humidity: <span class="humidity"></span></p>
-      <p>Pressure: <span class="pressure"></span></p>
-      <p>Current Temperature: <span class="currentTemp"></span></p>
-      <p>Min of the day: <span class="minDay"></span></p>
-      <p>Max of the day: <span class="maxDay"></span></p>
-      <iframe src="" frameborder="0" class="maps"></iframe>
-    </div>
-    <div class="hidden">
-      <h3>Forecast for the next 5 days <span class="forecastCity"></span> &nbsp;<span
-        class="forecastCountry"> </span></h3>
-      <div class="forecast-weather">
-        <div class="day"></div>
-        <div class="day"></div>
-        <div class="day"></div>
-        <div class="day"></div>
-        <div class="day"></div>
-        <div class="day"></div>
+    <div class="conainer">
+      <div class="inputField">
+        <h2 class="main-title">Weather App</h2>
+        <input
+          type="text"
+          name="search"
+          class="city"
+          placeholder="Enter city name"
+        />
+        <span
+          ><input
+            type="button"
+            value="Show Weather"
+            name=""
+            id="weather-now"
+            class="buttons"
+            onclick="weatherNow()"
+        /></span>
+        <span
+          ><input
+            type="button"
+            value="Show Forecast"
+            name=""
+            id="weather-forecast"
+            class="buttons"
+            onclick="weatherForecast()"
+        /></span>
+      </div>
+      <div class="hidden">
+        <h3 class="title">Weather Now</h3>
+        <img src="" alt="" class="image" />
+        <p>Description: <span class="description"></span></p>
+        <p>Humidity: <span class="humidity"></span></p>
+        <p>Pressure: <span class="pressure"></span></p>
+        <p>Current Temperature: <span class="currentTemp"></span></p>
+        <p>Min of the day: <span class="minDay"></span></p>
+        <p>Max of the day: <span class="maxDay"></span></p>
+        <iframe src="" frameborder="0" class="maps"></iframe>
+      </div>
+      <div class="hidden">
+        <h3>
+          Forecast for the next 5 days
+          <span class="forecastCity"></span> &nbsp;<span
+            class="forecastCountry"
+          >
+          </span>
+        </h3>
+        <div class="forecast-weather">
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+        </div>
       </div>
     </div>
- 
-</div>
     <script src="./app.js"></script>
   </body>
 </html>
