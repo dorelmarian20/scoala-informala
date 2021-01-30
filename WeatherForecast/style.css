@@ -30,6 +30,7 @@ body {
   width: 40%;
   border: none;
   border: 2px solid rgb(96, 85, 194);
+  cursor: pointer !important;
 }
 .buttons {
   border: none;
@@ -37,7 +38,7 @@ body {
   font-size: 1rem;
   background: rgb(96, 85, 194);
   color: white;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .hidden {
