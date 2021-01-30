@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Weather App</title>
   </head>
-  <body class="col-sm-12">
+  <body>
     <div class="conainer">
-      <div class="inputField col-sm-12">
+      <div class="inputField">
         <h2 class="main-title">Weather App</h2>
         <input
           type="text"
           name="search"
-          class="city"
+          class="city col-sm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
           placeholder="Enter city name"
         />
         <span
@@ -28,7 +28,7 @@
             value="Show Weather"
             name=""
             id="weather-now"
-            class="buttons col-sm-12"
+            class="buttons col-sm-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
             onclick="weatherNow()"
         /></span>
         <span
@@ -37,21 +37,57 @@
             value="Show Forecast"
             name=""
             id="weather-forecast"
-            class="buttons col-sm-12"
+            class="buttons col-sm-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
             onclick="weatherForecast()"
         /></span>
       </div>
 
       <div class="hidden">
-        <h3 class="title col-sm-12">Weather Now</h3>
-        <img src="" alt="" class="image col-sm-12" />
-        <p>Description: <span class="description col-sm-12"></span></p>
-        <p>Humidity: <span class="humidity col-sm-12"></span></p>
-        <p>Pressure: <span class="pressure col-sm-12"></span></p>
-        <p>Current Temperature: <span class="currentTemp col-sm-12"></span></p>
-        <p>Min of the day: <span class="minDay col-sm-12"></span></p>
-        <p>Max of the day: <span class="maxDay col-sm-12"></span></p>
-        <iframe src="" frameborder="0" class="maps col-sm-12"></iframe>
+        <h3 class="title col-sm-12 col-xs-12 col-sm-12 col-xl-12">
+          Weather Now
+        </h3>
+        <img src="" alt="" class="image" />
+        <p>
+          Description:
+          <span
+            class="description col-sm-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12"
+          ></span>
+        </p>
+        <p>
+          Humidity:
+          <span
+            class="humidity col-sm-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12"
+          ></span>
+        </p>
+        <p>
+          Pressure:
+          <span
+            class="pressure col-sm-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12"
+          ></span>
+        </p>
+        <p>
+          Current Temperature:
+          <span
+            class="currentTemp col-sm-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12"
+          ></span>
+        </p>
+        <p>
+          Min of the day:
+          <span
+            class="minDay col-sm-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12"
+          ></span>
+        </p>
+        <p>
+          Max of the day:
+          <span
+            class="maxDay col-sm-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12"
+          ></span>
+        </p>
+        <iframe
+          src=""
+          frameborder="0"
+          class="maps col-sm-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12"
+        ></iframe>
       </div>
       <div class="hidden">
         <h3>
@@ -61,13 +97,27 @@
           >
           </span>
         </h3>
-        <div class="forecast-weather col-sm-12">
-          <div class="day col-sm-12"></div>
-          <div class="day col-sm-12"></div>
-          <div class="day col-sm-12"></div>
-          <div class="day col-sm-12"></div>
-          <div class="day col-sm-12"></div>
-          <div class="day col-sm-12"></div>
+        <div
+          class="forecast-weather col-sm-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12"
+        >
+          <div
+            class="day col-sm-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+          ></div>
+          <div
+            class="day col-sm-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+          ></div>
+          <div
+            class="day col-sm-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+          ></div>
+          <div
+            class="day col-sm-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+          ></div>
+          <div
+            class="day col-sm-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+          ></div>
+          <div
+            class="day col-sm-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+          ></div>
         </div>
       </div>
     </div>
