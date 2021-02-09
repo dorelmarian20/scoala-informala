@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
     <title>Shopping List</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Shopping List</h1>
-      </header>
+      <h1>Shopping List</h1>
+    </header>
     <form>
-        <input type="text" class="todo-input">
-        <button class="todo-button" type="submit">Add</button>
-        <div class="select">
-            <button class="ascendent" type="button">Ascendent</button>
-            <button class="descendent" type="button">Descendent</button>
-        </div>
+      <input type="text" class="todo-input" />
+      <button class="todo-button" type="submit">Add</button>
+      <div class="select">
+        <button class="ascendent" type="button">Ascendent</button>
+        <button class="descendent" type="button">Descendent</button>
+      </div>
     </form>
     <div class="todo-container">
-        <ul class="todo-list" id="myList">
-                
-        </ul>
+      <ul class="todo-list" id="myList"></ul>
     </div>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
