@@ -9,16 +9,16 @@ const LibrarySong = ({
   isPlaying,
 }) => {
   const songSelectHandler = () => {
-    setCurrentSong(song);
-    //check if the song is playing
-    if (isPlaying) {
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        play.playPromise.then((audio) => {
-          audioRef.current.play();
-        });
-      }
-    }
+    // setCurrentSong(song);
+    // //check if the song is playing
+    // if (isPlaying) {
+    //   const playPromise = audioRef.current.play();
+    //   if (playPromise !== undefined) {
+    //     play.playPromise.then((audio) => {
+    //       audioRef.current.play();
+    //     });
+    //   }
+    // }
   };
   return (
     <div onClick={songSelectHandler} className="library-song">
