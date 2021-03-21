@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Segment, Grid, Button, Icon } from "semantic-ui-react";
+import { Segment, Grid, Icon, Button } from "semantic-ui-react";
 import { format } from "date-fns";
 import EventDetailedMap from "./EventDetailedMap";
 
@@ -10,7 +10,11 @@ export default function EventDetailedInfo({ event }) {
       <Segment attached="top">
         <Grid>
           <Grid.Column width={1}>
-            <Icon size="large" color="teal" name="info" />
+            <Icon
+              size="large"
+              style={{ backgroundColor: "white", color: "#537651" }}
+              name="info"
+            />
           </Grid.Column>
           <Grid.Column width={15}>
             <p>{event.description}</p>
@@ -20,7 +24,11 @@ export default function EventDetailedInfo({ event }) {
       <Segment attached>
         <Grid verticalAlign="middle">
           <Grid.Column width={1}>
-            <Icon name="calendar" size="large" color="teal" />
+            <Icon
+              name="calendar"
+              size="large"
+              style={{ backgroundColor: "white", color: "#537651" }}
+            />
           </Grid.Column>
           <Grid.Column width={15}>
             <span>{format(event.date, "MMMM d, yyyy h:mm a")}</span>
@@ -30,7 +38,11 @@ export default function EventDetailedInfo({ event }) {
       <Segment attached>
         <Grid verticalAlign="middle">
           <Grid.Column width={1}>
-            <Icon name="marker" size="large" color="teal" />
+            <Icon
+              name="marker"
+              size="large"
+              style={{ backgroundColor: "white", color: "#537651" }}
+            />
           </Grid.Column>
           <Grid.Column width={11}>
             <span>{event.venue.address}</span>
@@ -38,7 +50,7 @@ export default function EventDetailedInfo({ event }) {
           <Grid.Column width={4}>
             <Button
               onClick={() => setMapOpenToggle(!mapOpen)}
-              color="teal"
+              style={{ backgroundColor: "#537651", color: "white" }}
               size="tiny"
               content={mapOpen ? "Hide map" : "Show map"}
             />

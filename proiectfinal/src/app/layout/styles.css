@@ -5,9 +5,9 @@ body {
 .ui.fixed.menu {
   background-image: linear-gradient(
     135deg,
-    rgb(24, 42, 115) 0%,
-    rgb(33, 138, 174) 69%,
-    rgb(32, 167, 172) 89%
+    #3b553a 0%,
+    #537651 69%,
+    #6a9868 89%
   );
 }
 
@@ -20,9 +20,9 @@ body {
   align-items: center;
   background-image: linear-gradient(
     135deg,
-    rgb(24, 42, 115) 0%,
-    rgb(33, 138, 174) 69%,
-    rgb(32, 167, 172) 89%
+    #3b553a 0%,
+    #537651 69%,
+    #6a9868 89%
   ) !important;
   height: 100vh;
 }

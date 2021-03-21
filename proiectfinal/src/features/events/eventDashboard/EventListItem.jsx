@@ -1,14 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Segment, Item, Icon, List, Button } from "semantic-ui-react";
+import { Segment, Item, Icon, List, Button, Label } from "semantic-ui-react";
 import EventListAttendee from "./EventListAttendee";
-import { useDispatch } from "react-redux";
-import { deleteEvent } from "../eventActions";
+import { Link } from "react-router-dom";
 import { format } from "date-fns";
 
 export default function EventListItem({ event }) {
-  const dispatch = useDispatch();
-
   return (
     <Segment.Group>
       <Segment>
@@ -17,7 +13,18 @@ export default function EventListItem({ event }) {
             <Item.Image size="tiny" circular src={event.hostPhotoURL} />
             <Item.Content>
               <Item.Header content={event.title} />
-              <Item.Description>Hosted by {event.hostedBy}</Item.Description>
+              <Item.Description>
+                Hosted by{" "}
+                <Link to={`/profile/${event.hostUid}`}>{event.hostedBy}</Link>{" "}
+              </Item.Description>
+              {event.isCancelled && (
+                <Label
+                  style={{ top: "-40px" }}
+                  ribbon="right"
+                  color="red"
+                  content="This event has been cancelled"
+                />
+              )}
             </Item.Content>
           </Item>
         </Item.Group>
@@ -38,15 +45,9 @@ export default function EventListItem({ event }) {
       <Segment clearing>
         <div>{event.description}</div>
         <Button
-          onClick={() => dispatch(deleteEvent(event.id))}
-          color="red"
-          floated="right"
-          content="Delete"
-        />
-        <Button
           as={Link}
           to={`/events/${event.id}`}
-          color="teal"
+          style={{ backgroundColor: "#537651", color: "white" }}
           floated="right"
           content="View"
         />

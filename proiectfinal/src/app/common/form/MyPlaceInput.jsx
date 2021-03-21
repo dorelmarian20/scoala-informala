@@ -1,10 +1,10 @@
-import React from "react";
-import { useField } from "formik";
-import { FormField, Label, Segment, List } from "semantic-ui-react";
+import React from 'react';
+import { useField } from 'formik';
+import { FormField, Label, Segment, List } from 'semantic-ui-react';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
-} from "react-places-autocomplete";
+} from 'react-places-autocomplete';
 
 export default function MyPlaceInput({ label, options, ...props }) {
   const [field, meta, helpers] = useField(props);
@@ -17,31 +17,25 @@ export default function MyPlaceInput({ label, options, ...props }) {
   }
 
   function handleBlur(e) {
-    field.onBlur(e);
-    if (!field.value.latLng) {
-      helpers.setValue({ address: "", latLng: null });
-    }
+      field.onBlur(e);
+      if (!field.value.latLng) {
+          helpers.setValue({address: '', latLng: null})
+      }
   }
 
   return (
     <PlacesAutocomplete
-      value={field.value["address"]}
+      value={field.value['address']}
       onChange={(value) => helpers.setValue({ address: value })}
       onSelect={(value) => handleSelect(value)}
       searchOptions={options}
     >
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <FormField error={meta.touched && !!meta.error}>
-          <input
-            {...getInputProps({
-              name: field.name,
-              onBlur: (e) => handleBlur(e),
-              ...props,
-            })}
-          />
+          <input {...getInputProps({ name: field.name, onBlur: (e) => handleBlur(e), ...props })} />
           {meta.touched && meta.error ? (
-            <Label basic color="red">
-              {meta.error["address"]}
+            <Label basic color='red'>
+              {meta.error['address']}
             </Label>
           ) : null}
           {suggestions?.length > 0 && (
@@ -49,9 +43,9 @@ export default function MyPlaceInput({ label, options, ...props }) {
               loading={loading}
               style={{
                 marginTop: 0,
-                position: "absolute",
+                position: 'absolute',
                 zIndex: 1000,
-                width: "100%",
+                width: '100%',
               }}
             >
               <List selection>

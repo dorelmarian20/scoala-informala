@@ -17,13 +17,17 @@ export default function NavBar({ setFormOpen }) {
             alt="logo"
             style={{ marginRight: "15px" }}
           />
-          Re-vents
+          Eventque
         </Menu.Item>
         <Menu.Item as={NavLink} to="/events" name="Events" />
         <Menu.Item as={NavLink} to="/sandbox" name="Sandbox" />
         {authenticated && (
           <Menu.Item as={NavLink} to="/createEvent">
-            <Button positive inverted content="Create Event" />
+            <Button
+              style={{ backgroundColor: "#537651", color: "white" }}
+              inverted
+              content="Create Event"
+            />
           </Menu.Item>
         )}
         {authenticated ? <SignedInMenu /> : <SignedOutMenu />}
