@@ -11,7 +11,7 @@ import {
   SET_START_DATE,
   RETAIN_STATE,
   CLEAR_SELECTED_EVENT,
-} from './eventConstants';
+} from "./eventConstants";
 
 const initialState = {
   events: [],
@@ -19,7 +19,7 @@ const initialState = {
   moreEvents: true,
   selectedEvent: null,
   lastVisible: null,
-  filter: 'all',
+  filter: "all",
   startDate: new Date(),
   retainState: false,
 };
