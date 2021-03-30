@@ -101,7 +101,7 @@ export default function EventDetailedHeader({ event, isHost, isGoing }) {
                       : () => setModalOpen(true)
                   }
                   loading={loading}
-                  style={{ backgroundColor: "#537651", color: "white" }}
+                  color="teal"
                 >
                   JOIN THIS EVENT
                 </Button>

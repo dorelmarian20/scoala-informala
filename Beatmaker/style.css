@@ -1,102 +1,111 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 i,
 svg {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .kick-pad,
 .snare-pad,
 .hihat-pad {
-    width: 5rem;
-    height: 5rem;
-    margin: 1rem 0.5rem;
-    cursor: pointer;
+  width: 5rem;
+  height: 5rem;
+  margin: 1rem 0.5rem;
+  cursor: pointer;
 }
 
-.kick-pad{
-    background: rgb(123, 201, 246);
+.kick-pad {
+  background: rgb(123, 201, 246);
 }
-.snare-pad{
-    background: rgb(193, 127, 246);
+.snare-pad {
+  background: rgb(193, 127, 246);
 }
-.hihat-pad{
-    background: rgb(161, 243, 158);
+.hihat-pad {
+  background: rgb(161, 243, 158);
 }
 
 .kick-pad.active {
-    background: rgb(37, 157, 226);
+  background: rgb(37, 157, 226);
 }
 .snare-pad.active {
-    background: rgb(165, 75, 240);
+  background: rgb(165, 75, 240);
 }
 .hihat-pad.active {
-    background: rgb(86, 235, 81);
+  background: rgb(86, 235, 81);
 }
 
 .sequencer {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .hihat-track,
 .snare-track,
 .kick-track {
-    display: flex;
-    align-items: center;
-    width: 70%;
-    justify-content: space-between;
-    margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  width: 70%;
+  justify-content: space-between;
+  margin-top: 5rem;
 }
 .kick,
 .snare,
 .hihat {
-    display: flex;
+  display: flex;
 }
 .controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex: 1;
-    margin: 0rem 2rem; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  margin: 0rem 2rem;
 }
 
 .controls button {
-    padding: 1rem;
-    border: none;
-    background: rgb(90, 87, 87);
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.5 ease;
+  padding: 1rem;
+  border: none;
+  background: rgb(90, 87, 87);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.5 ease;
 }
 
 .pad {
-    transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .play {
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    background: rgb(90, 87, 87);
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 3rem;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background: rgb(90, 87, 87);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 3rem;
 }
 
 select {
-    padding: 1rem;
-    font-size: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+@keyframes playTrack {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
 }

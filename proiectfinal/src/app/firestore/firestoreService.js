@@ -153,7 +153,6 @@ export async function setMainPhoto(photo) {
   batch.update(db.collection("users").doc(user.uid), {
     photoURL: photo.url,
   });
-
   try {
     const eventsQuerySnap = await eventDocQuery.get();
     for (let i = 0; i < eventsQuerySnap.docs.length; i++) {
@@ -183,9 +182,7 @@ export async function setMainPhoto(photo) {
         photoURL: photo.url,
       });
     });
-
     await batch.commit();
-
     return await user.updateProfile({
       photoURL: photo.url,
     });

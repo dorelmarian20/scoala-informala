@@ -38,6 +38,7 @@ export function fetchEvents(filter, startDate, limit, lastDocSnapshot) {
         payload: { events, moreEvents, lastVisible },
       });
       dispatch(asyncActionFinish());
+      return lastVisible;
     } catch (error) {
       dispatch(asyncActionError(error));
     }
@@ -98,7 +99,6 @@ export function listenToEventChat(comments) {
     payload: comments,
   };
 }
-
 export function clearEvents() {
   return {
     type: CLEAR_EVENTS,

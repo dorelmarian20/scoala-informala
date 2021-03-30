@@ -1,6 +1,6 @@
-import React from 'react';
-import EventListItem from './EventListItem';
-import InfiniteScroll from 'react-infinite-scroller';
+import React from "react";
+import EventListItem from "./EventListItem";
+import InfiniteScroll from "react-infinite-scroller";
 
 export default function EventList({
   events,
